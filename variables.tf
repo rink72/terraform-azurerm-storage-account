@@ -49,6 +49,12 @@ variable "is_hns_enabled" {
   default     = false
 }
 
+variable "container_names" {
+  type        = list(string)
+  description = "A list of container definitions"
+  default = []
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags to apply to the storage account and solutions."

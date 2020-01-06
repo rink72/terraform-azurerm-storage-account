@@ -31,3 +31,15 @@ resource "azurerm_storage_account" "storage_account" {
     var.sa_depends_on
   ]
 }
+
+# Call the module to deploy any required containers
+module "blob_container" {
+  source = "./modules/blob-container/"
+
+  container_names = var.container_names
+  storage_account_name = var.name
+
+  bc_depends_on = [
+    azurerm_storage_account.storage_account
+  ]
+}
